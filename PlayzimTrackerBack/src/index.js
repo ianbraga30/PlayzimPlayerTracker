@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const produtosRouter = require('./routes/produtos');
+const playzimrouter = require('./routes/playzim');
+const Jogador = require('../models/jogadores');
 
 const port = 3000;
 mongoose.connect('mongodb://127.0.0.1:27017/PlayzimTracker')
@@ -22,10 +24,12 @@ app.use((req, res, next) => {
 },);
 
 app.use('/aprendizado',produtosRouter);
+app.use('/playzim', playzimrouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 });
+
 
 app.get('/', (req, res) => {
     res.send('Tela inicial, não há nada aqui (:')
