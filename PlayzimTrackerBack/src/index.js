@@ -4,6 +4,9 @@ const app = express();
 const produtosRouter = require('./routes/produtos');
 const playzimrouter = require('./routes/playzim');
 const Jogador = require('../models/jogadores');
+const cors = require('cors');
+
+app.use(cors());
 
 const port = 3000;
 mongoose.connect('mongodb://127.0.0.1:27017/PlayzimTracker')

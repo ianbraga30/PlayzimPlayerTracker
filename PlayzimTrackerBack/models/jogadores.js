@@ -3,19 +3,22 @@ const mongoose = require('mongoose');
 const JogadorSchema = new mongoose.Schema({
     nome: {
         type: String,
-        required: [true, "Nome é obrigatório"]
+        required: [true, 'Nome é obrigatório'],
     },
     email: {
         type: String,
-        required: [true, "Email é obrigatório"]
+        required: [true, 'Email é obrigatório'],
     },
-    brawlerfavorito: {
+    mao_favorita: {
         type: String,
-        required: [true, "Brawler favorito é obrigatório"]
+        required: [true, 'Brawler favorito é obrigatório'],
     },
-},
-{
+    foto: {
+        data: Buffer,
+        contentType: String,
+    },
+}, {
     timestamps: true,
 });
 
-const Jogador = mongoose.models.Jogador || mongoose.model('Jogador', JogadorSchema);
+module.exports = mongoose.model('Jogador', JogadorSchema);
